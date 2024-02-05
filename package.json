@@ -5,7 +5,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.js",
-    "build": "npm install --unsafe-perm && npm rebuild bcrypt"
+    "postinstall": "npm rebuild bcrypt",
+    "build": "npm install"
   },
   "keywords": [],
   "author": "",
