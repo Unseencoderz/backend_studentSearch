@@ -1,13 +1,10 @@
-// db.js
+
 const mongoose = require("mongoose");
 
 module.exports = () => {
-  const connectionParams = {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  };
+  
 
-  mongoose.connect(process.env.DB, connectionParams)
+  mongoose.connect(process.env.DB)
     .then(() => console.log("Connected to database successfully"))
     .catch(error => {
       console.error(error);
