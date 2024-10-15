@@ -1,8 +1,10 @@
-const jwt = require('jsonwebtoken');
-const sendVerificationEmail = require('../utils/verifyemail');
-const { User, validate } = require('../models/user');
-const bcrypt = require("bcrypt");
-const router = require('express').Router();
+import jwt from 'jsonwebtoken';
+import sendVerificationEmail from '../utils/verifyemail.js';
+import { User, validate } from '../models/user.js';
+import bcrypt from 'bcrypt';
+import express from 'express';
+
+const router = express.Router();
 
 router.post("/", async (req, res) => {
     try {
@@ -37,4 +39,4 @@ router.post("/", async (req, res) => {
     }
 });
 
-module.exports = router;
+export default router;

@@ -1,10 +1,10 @@
-const router = require("express").Router();
-const jwt = require('jsonwebtoken');
-const bcrypt = require("bcrypt");
-const { User } = require("../models/user");
+import express from "express";
+import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
+import { User } from "../models/user.js";
+import sendResetPasswordEmail from "../utils/resetemail.js";
 
-
-const sendResetPasswordEmail= require('../utils/resetemail');
+const router = express.Router();
 
 router.post('/', async (req, res) => {
   const { email } = req.body;
@@ -18,13 +18,11 @@ router.post('/', async (req, res) => {
     const url = `${process.env.BASE_URL}/api/reset-password?token=${token}`;
 
     sendResetPasswordEmail(email, token); 
-    
+
     res.status(200).send({ message: 'Password reset link has been sent to your email.' });
   } catch (error) {
     res.status(500).send({ message: 'Internal Server Error' });
   }
 });
 
-module.exports = router;
-
-
+export default router;

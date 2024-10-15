@@ -1,16 +1,15 @@
-const nodemailer = require('nodemailer');
+import nodemailer from 'nodemailer';
 
 const transporter = nodemailer.createTransport({
-  service: 'gmail', 
+  service: 'gmail',
   auth: {
-    user: process.env.EMAIL_USER, 
-    pass: process.env.EMAIL_PASS, 
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
   },
 });
 
 const sendVerificationEmail = (email, token) => {
   const url = `${process.env.FRONTEND_URL}/verify-email?token=${token}`;
-  
 
   const mailOptions = {
     from: "Student Search <noreply@studentsearch.com>",
@@ -38,14 +37,13 @@ const sendVerificationEmail = (email, token) => {
         </div>
       </div>
     `,
-    replyTo: "no-reply@studentsearch.com", 
+    replyTo: "no-reply@studentsearch.com",
   };
   
   transporter.sendMail(mailOptions);
 };
 
-module.exports = sendVerificationEmail;
-
+export default sendVerificationEmail;
 
 
 

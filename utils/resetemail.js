@@ -1,4 +1,4 @@
-const nodemailer = require('nodemailer');
+import nodemailer from 'nodemailer';
 
 const transporter = nodemailer.createTransport({
   service: 'gmail',
@@ -10,7 +10,6 @@ const transporter = nodemailer.createTransport({
 
 const sendResetPasswordEmail = (email, token) => {
   const url = `${process.env.FRONTEND_URL}/reset-password?token=${token}`;
-
 
   const mailOptions = {
     from: "Student Search <noreply@studentsearch.com>",
@@ -43,4 +42,4 @@ const sendResetPasswordEmail = (email, token) => {
   transporter.sendMail(mailOptions);
 };
 
-module.exports = sendResetPasswordEmail;
+export default sendResetPasswordEmail;

@@ -1,7 +1,8 @@
-const express = require('express');
+import express from 'express';
+import jwt from 'jsonwebtoken';
+import { User } from '../models/user.js';
+
 const router = express.Router();
-const jwt = require('jsonwebtoken');
-const { User } = require('../models/user');
 
 router.get('/', async (req, res) => {
   const token = req.query.token;
@@ -26,4 +27,4 @@ router.get('/', async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;
